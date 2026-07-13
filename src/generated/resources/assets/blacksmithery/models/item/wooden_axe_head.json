@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blacksmithery:item/wooden_axe_head"
+  }
+}

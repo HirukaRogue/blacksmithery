@@ -1,0 +1,32 @@
+package net.hirukarogue.blacksmithery;
+
+import net.hirukarogue.blacksmithery.items.WeaponAndToolPieces;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
+public class CreativeTab {
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, BlacksmitheryMain.MOD_ID);
+
+    public static final Supplier<CreativeModeTab> BLACKSMITHERY_CREATIVE_MODE_TAB = CREATIVE_MODE_TABS.register("blacksmithery_tab",
+            () -> CreativeModeTab.builder()
+            .icon(() -> new ItemStack(WeaponAndToolPieces.GOLD_AXE_HEAD.get()))
+                    .title(Component.translatable("creativetab.blacksmithery.tab"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(WeaponAndToolPieces.WOODEN_AXE_HEAD);
+                        output.accept(WeaponAndToolPieces.STONE_AXE_HEAD);
+                        output.accept(WeaponAndToolPieces.IRON_AXE_HEAD);
+                        output.accept(WeaponAndToolPieces.GOLD_AXE_HEAD);
+                        output.accept(WeaponAndToolPieces.DIAMOND_AXE_HEAD);
+                    }).build()
+    );
+
+    public static void register(IEventBus eventBus) {
+        CREATIVE_MODE_TABS.register(eventBus);
+    }
+}
