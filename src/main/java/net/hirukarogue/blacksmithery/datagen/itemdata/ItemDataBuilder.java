@@ -1,5 +1,7 @@
 package net.hirukarogue.blacksmithery.datagen.itemdata;
 
+import net.hirukarogue.blacksmithery.datagen.itemdata.providers.BlacksmitheryItemModelProvider;
+import net.hirukarogue.blacksmithery.datagen.itemdata.providers.BlacksmitheryItemTagProvider;
 import net.hirukarogue.blacksmithery.miscelaneous.tagdata.TagForItems;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -11,8 +13,6 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class ItemDataBuilder {
-    public static final Map<String, List<Supplier<Object>>> brain = new HashMap<>();
-
     private final Item item;
 
     private ItemDataBuilder(Item item) {
@@ -24,16 +24,16 @@ public class ItemDataBuilder {
     }
 
     public ItemDataBuilder basicItem() {
-        this.addEntry("basic_item", () -> this.item);
+        addItemModelEntry("basic_item", () -> this.item);
         return this;
     }
 
     public ItemDataBuilder addToTag(TagKey<Item> tagKey) {
-        this.addEntry("add_to_tag", () -> new TagForItems(this.item, tagKey));
+        BlacksmitheryItemTagProvider.BRAIN.add(() -> new TagForItems(this.item, tagKey));
         return this;
     }
 
-    private static void addEntry(String key, Supplier <Object> supplier) {
-        brain.computeIfAbsent(key,  k -> new ArrayList<>()).add(supplier);
+    private static void addItemModelEntry(String key, Supplier <Object> supplier) {
+        BlacksmitheryItemModelProvider.BRAIN.computeIfAbsent(key, k -> new ArrayList<>()).add(supplier);
     }
 }

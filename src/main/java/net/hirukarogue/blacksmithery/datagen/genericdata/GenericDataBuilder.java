@@ -1,5 +1,7 @@
 package net.hirukarogue.blacksmithery.datagen.genericdata;
 
+import net.hirukarogue.blacksmithery.datagen.genericdata.providers.BlacksmitheryDataMapProvider;
+import net.hirukarogue.blacksmithery.datagen.genericdata.providers.BlacksmitheryRecipeProvider;
 import net.hirukarogue.blacksmithery.miscelaneous.*;
 import net.hirukarogue.blacksmithery.miscelaneous.recipedata.resultandingredients.RecipeResultData;
 import net.hirukarogue.blacksmithery.miscelaneous.recipedata.ShapedRecipeData;
@@ -18,25 +20,15 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class GenericDataBuilder {
-    public static final Map<String, List<Supplier<Object>>> brain = new HashMap<>();
-
     public void toDatamap(DataMapType<?,?> dataMapType, Object key, Object value) {
-        addEntry("to_datamap", () -> new DataMapData(dataMapType, new Pair<>(key, value)));
+        BlacksmitheryDataMapProvider.BRAIN.add(() -> new DataMapData(dataMapType, new Pair<>(key, value)));
     }
 
     public void shapelessRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, List<ItemLike> ingredients) {
-        addEntry("shapeless_recipe", () -> new ShapelessRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredients));
+        BlacksmitheryRecipeProvider.SHAPELESS_RECIPES.add( () -> new ShapelessRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredients));
     }
 
-    public void shapedRecipe2x2(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, ShapedRecipeIngredientData ingredientData) {
-        addEntry("2x2_shaped_recipe", () -> new ShapedRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredientData));
-    }
-
-    public void shapedRecipe3x3(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, ShapedRecipeIngredientData ingredientData) {
-        addEntry("3x3_shaped_recipe", () -> new ShapedRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredientData));
-    }
-
-    public static void addEntry(String function, Supplier<Object> supplier) {
-        brain.computeIfAbsent(function, k -> new java.util.ArrayList<>()).add(supplier);
+    public void shapedRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, ShapedRecipeIngredientData ingredientData) {
+        BlacksmitheryRecipeProvider.SHAPED_RECIPES.add(() -> new ShapedRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredientData));
     }
 }

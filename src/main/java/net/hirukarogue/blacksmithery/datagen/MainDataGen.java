@@ -1,5 +1,6 @@
 package net.hirukarogue.blacksmithery.datagen;
 
+import com.mojang.logging.LogUtils;
 import net.hirukarogue.blacksmithery.BlacksmitheryMain;
 import net.hirukarogue.blacksmithery.datagen.blockdata.BlockDataBuilder;
 import net.hirukarogue.blacksmithery.datagen.blockdata.providers.BlacksmitheryBlockLootTableProvider;
@@ -22,12 +23,15 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.slf4j.Logger;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = BlacksmitheryMain.MOD_ID)
 public class MainDataGen {
+    private static final Logger LOGGER = LogUtils.getLogger();
+
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator data = event.getGenerator();
@@ -66,32 +70,29 @@ public class MainDataGen {
     }
 
     private static void storeData() {
+        LOGGER.info("Starting registering on datagen...");
         try {
-            System.out.println("First Line");
             ItemDataBuilder.item(WeaponAndToolPieces.WOODEN_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.WOOD_PIECES);
-            System.out.println("Second Line");
             ItemDataBuilder.item(WeaponAndToolPieces.STONE_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.STONE_PIECES);
-            System.out.println("Third Line");
             ItemDataBuilder.item(WeaponAndToolPieces.IRON_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.IRON_PIECES);
-            System.out.println("Fourth Line");
             ItemDataBuilder.item(WeaponAndToolPieces.GOLD_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.GOLD_PIECES)
                     .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES);
-            System.out.println("Fifth Line");
             ItemDataBuilder.item(WeaponAndToolPieces.DIAMOND_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.DIAMOND_PIECES)
                     .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES);
-            System.out.println("End Line");
+            LOGGER.info("Datagen complete!");
         } catch (Exception e) {
-            throw new RuntimeException("Something happened: " + e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
+            LOGGER.error("Fatal error on storing data", e);
+            throw new RuntimeException(e);
         }
     }
 }
