@@ -18,17 +18,16 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
 import oshi.util.tuples.Pair;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Supplier;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
 public class BlacksmitheryBlockLootTableProvider extends BlockLootSubProvider {
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static final Map<String, List<Supplier<Object>>> BRAIN = new HashMap<>();
+    public static final List<Supplier<Block>> DROPSELF = new ArrayList<>();
+    public static final List<Supplier<Pair<Block, Block>>> DROP_OTHER = new ArrayList<>();
+    public static final List<Supplier<DropData>> BLOCK_DROPS = new ArrayList<>();
 
     public BlacksmitheryBlockLootTableProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
@@ -38,64 +37,37 @@ public class BlacksmitheryBlockLootTableProvider extends BlockLootSubProvider {
     protected @NotNull Iterable<Block> getKnownBlocks() {
         // Aqui você retorna apenas os blocos que você REALMENTE registrou no seu mod.
         // O sistema só vai validar loot tables para os blocos desta lista.
-        return BRAIN.getOrDefault("drop_self", List.of()).stream()
-                .map(supplier -> (Block) supplier.get())
-                .toList();
+        return DROPSELF.stream().map(Supplier::get).toList();
     }
 
     @Override
     protected void generate() {
-        List<Supplier<Object>> funcion = BRAIN.getOrDefault("set_drop_range", List.of());
-        if (!funcion.isEmpty()) {
-            for (Supplier<Object> object : funcion) {
-                DropData data;
-                if (object.get() instanceof DropData dropData) {
-                    data = dropData;
-                } else {
-                    LOGGER.error("Invalid drop range data: {}", object.get());
-                    continue;
-                }
+        if (!BLOCK_DROPS.isEmpty()) {
+            for (Supplier<DropData> object : BLOCK_DROPS) {
+                Block block = object.get().dropFrom();
 
-                Block block = data.dropFrom();
-
-                if (data.itemOrBlock() instanceof Block blockAsItem) {
-                    createMultipleOreDrops(block, blockAsItem.asItem(), data.min(), data.max());
-                } else if (data.itemOrBlock() instanceof Item item) {
-                    createMultipleOreDrops(block, item, data.min(), data.max());
+                if (object.get().itemOrBlock() instanceof Block blockAsItem) {
+                    createMultipleOreDrops(block, blockAsItem.asItem(), object.get().min(), object.get().max());
+                } else if (object.get().itemOrBlock() instanceof Item item) {
+                    createMultipleOreDrops(block, item, object.get().min(), object.get().max());
                 } else {
-                    LOGGER.error("Invalid drop item for block {}: {}", block, data.itemOrBlock());
+                    LOGGER.error("Invalid drop item for block {}: {}, Must be block or item", block, object.get().itemOrBlock());
                 }
             }
         }
 
-        funcion = BRAIN.getOrDefault("drop_self", List.of());
-        if (!funcion.isEmpty()) {
-            for (Supplier<Object> supplier : funcion) {
-                if (supplier instanceof Block block) {
-                    dropSelf(block);
-                } else {
-                    LOGGER.error("Invalid drop self block: {}", supplier.get());
-                }
+        if (!DROPSELF.isEmpty()) {
+            for (Supplier<Block> supplier : DROPSELF) {
+                dropSelf(supplier.get());
             }
         }
 
-        funcion = BRAIN.getOrDefault("drop_other", List.of());
-        if (!funcion.isEmpty()) {
-            for (Supplier<Object> supplier : funcion) {
-                if (supplier.get() instanceof Pair<?, ?> pair) {
-                    Block block;
-                    Block dropBlock;
-                    if (pair.getA() instanceof Block b1 && pair.getB() instanceof Block b2) {
-                        block = b1;
-                        dropBlock = b2;
-                    } else {
-                        LOGGER.error("Invalid drop other entry: {} -> Both pairs must be blocks", supplier.get());
-                        continue;
-                    }
-                    dropOther(block, dropBlock);
-                } else {
-                    LOGGER.error("Invalid drop other entry: {} -> Supplier is not a pair", supplier.get());
-                }
+        if (!DROP_OTHER.isEmpty()) {
+            for (Supplier<Pair<Block, Block>> supplier : DROP_OTHER) {
+                Block block = supplier.get().getA();
+                Block dropBlock = supplier.get().getB();
+
+                dropOther(block, dropBlock);
             }
         }
     }

@@ -7,13 +7,13 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
 
 public class ItemDataBuilder {
     private final Item item;
+    private boolean hasModel = false;
+
+    private final List<Runnable> buildActions = new ArrayList<>();
 
     private ItemDataBuilder(Item item) {
         this.item = item;
@@ -24,16 +24,25 @@ public class ItemDataBuilder {
     }
 
     public ItemDataBuilder basicItem() {
-        addItemModelEntry("basic_item", () -> this.item);
-        return this;
+        if (!hasModel) {
+            buildActions.add(() -> BlacksmitheryItemModelProvider.BASIC_ITEM.add(() -> this.item));
+            hasModel = true;
+            return this;
+        }
+
+        throw new IllegalArgumentException("An item cannot have more than 1 item model, item: " + this.item);
     }
 
     public ItemDataBuilder addToTag(TagKey<Item> tagKey) {
-        BlacksmitheryItemTagProvider.BRAIN.add(() -> new TagForItems(this.item, tagKey));
+        buildActions.add(() -> BlacksmitheryItemTagProvider.BRAIN.add(() -> new TagForItems(this.item, tagKey)));
         return this;
     }
 
-    private static void addItemModelEntry(String key, Supplier <Object> supplier) {
-        BlacksmitheryItemModelProvider.BRAIN.computeIfAbsent(key, k -> new ArrayList<>()).add(supplier);
+    public void build() {
+        for (Runnable action : buildActions) {
+            action.run();
+        }
+
+        buildActions.clear();
     }
 }

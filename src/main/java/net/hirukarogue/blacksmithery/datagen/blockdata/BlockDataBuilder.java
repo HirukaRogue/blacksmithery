@@ -10,12 +10,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import oshi.util.tuples.Pair;
 
-import java.util.*;
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlockDataBuilder {
     private Block block;
-    // Armazenamos as configurações temporariamente ou injetamos direto no "brain"
+    private boolean hasBlockState = false;
+
+    private final List<Runnable> buildActions = new ArrayList<>();
 
     private BlockDataBuilder(Block block) {
         this.block = block;
@@ -26,40 +28,45 @@ public class BlockDataBuilder {
     }
 
     public BlockDataBuilder dropSelf() {
-        addLootTableEntry("drop_self", () -> this.block);
-        return this; // Retorna o próprio builder para permitir encadeamento
+        buildActions.add(() -> BlacksmitheryBlockLootTableProvider.DROPSELF.add(() -> this.block));
+        return this;
     }
 
     public BlockDataBuilder dropOther(Block block) {
-        addLootTableEntry("drop_other", () -> new Pair<>(this.block, block));
+        buildActions.add(() -> BlacksmitheryBlockLootTableProvider.DROP_OTHER.add(() -> new Pair<>(this.block, block)));
         return this;
     }
 
     public BlockDataBuilder cubeAll() {
-        addBlockStateEntry("cube_all", () -> this.block);
-        return this;
+        if (!hasBlockState) {
+            buildActions.add(() -> BlacksmitheryBlockStateProvider.CUBE_ALL.add(() -> this.block));
+            this.hasBlockState = true;
+            return this;
+        }
+
+        throw new IllegalArgumentException("A block cannot have more than one block state, block: " + this.block);
     }
 
     public BlockDataBuilder addToTag(TagKey<Block> tag) {
-        BlacksmitheryBlockTagProvider.BRAIN.add(() -> new TagForBlocks(this.block, tag));
+        buildActions.add(() -> BlacksmitheryBlockTagProvider.BRAIN.add(() -> new TagForBlocks(this.block, tag)));
         return this;
     }
 
     public BlockDataBuilder setDropRange(Block block, int min, int max) {
-        addLootTableEntry("set_drop_range", () -> new DropData(this.block, block, min, max));
+        buildActions.add(() -> BlacksmitheryBlockLootTableProvider.BLOCK_DROPS.add(() -> new DropData(this.block, block, min, max)));
         return this;
     }
 
     public BlockDataBuilder setDropRange(Item item, int min, int max) {
-        addLootTableEntry("set_drop_range", () -> new DropData(this.block, item, min, max));
+        buildActions.add(() -> BlacksmitheryBlockLootTableProvider.BLOCK_DROPS.add(() -> new DropData(this.block, item, min, max)));
         return this;
     }
 
-    private static void addLootTableEntry(String key, Supplier<Object> supplier) {
-        BlacksmitheryBlockLootTableProvider.BRAIN.computeIfAbsent(key, k -> new ArrayList<>()).add(supplier);
-    }
-
-    private static void addBlockStateEntry(String key, Supplier<Object> supplier) {
-        BlacksmitheryBlockStateProvider.BRAIN.computeIfAbsent(key, k-> new ArrayList<>()).add(supplier);
+    public void build() {
+        for (Runnable action : buildActions) {
+            action.run();
+        }
+        buildActions.clear();
     }
 }
+

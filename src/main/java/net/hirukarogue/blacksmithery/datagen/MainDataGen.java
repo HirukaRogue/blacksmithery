@@ -74,21 +74,26 @@ public class MainDataGen {
         try {
             ItemDataBuilder.item(WeaponAndToolPieces.WOODEN_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
-                    .addToTag(BlacksmitheryTags.Items.WOOD_PIECES);
+                    .addToTag(BlacksmitheryTags.Items.WOOD_PIECES)
+                    .build();
             ItemDataBuilder.item(WeaponAndToolPieces.STONE_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
-                    .addToTag(BlacksmitheryTags.Items.STONE_PIECES);
+                    .addToTag(BlacksmitheryTags.Items.STONE_PIECES)
+                    .build();
             ItemDataBuilder.item(WeaponAndToolPieces.IRON_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
-                    .addToTag(BlacksmitheryTags.Items.IRON_PIECES);
+                    .addToTag(BlacksmitheryTags.Items.IRON_PIECES)
+                    .build();
             ItemDataBuilder.item(WeaponAndToolPieces.GOLD_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.GOLD_PIECES)
-                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES);
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
             ItemDataBuilder.item(WeaponAndToolPieces.DIAMOND_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.DIAMOND_PIECES)
-                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES);
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
             LOGGER.info("Datagen complete!");
         } catch (Exception e) {
             LOGGER.error("Fatal error on storing data", e);

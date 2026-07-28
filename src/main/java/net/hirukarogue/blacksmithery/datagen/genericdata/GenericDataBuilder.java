@@ -14,21 +14,32 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.datamaps.DataMapType;
 import oshi.util.tuples.Pair;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
 public class GenericDataBuilder {
+    private final List<Runnable> buildActions = new ArrayList<>();
+
     public void toDatamap(DataMapType<?,?> dataMapType, Object key, Object value) {
-        BlacksmitheryDataMapProvider.BRAIN.add(() -> new DataMapData(dataMapType, new Pair<>(key, value)));
+        buildActions.add(() -> BlacksmitheryDataMapProvider.BRAIN.add(() -> new DataMapData(dataMapType, new Pair<>(key, value))));
     }
 
     public void shapelessRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, List<ItemLike> ingredients) {
-        BlacksmitheryRecipeProvider.SHAPELESS_RECIPES.add( () -> new ShapelessRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredients));
+        buildActions.add(() -> BlacksmitheryRecipeProvider.SHAPELESS_RECIPES.add( () -> new ShapelessRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredients)));
     }
 
     public void shapedRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, ShapedRecipeIngredientData ingredientData) {
-        BlacksmitheryRecipeProvider.SHAPED_RECIPES.add(() -> new ShapedRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredientData));
+        buildActions.add(() -> BlacksmitheryRecipeProvider.SHAPED_RECIPES.add(() -> new ShapedRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredientData)));
+    }
+
+    public void build() {
+        for (Runnable action : buildActions) {
+            action.run();
+        }
+
+        buildActions.clear();
     }
 }

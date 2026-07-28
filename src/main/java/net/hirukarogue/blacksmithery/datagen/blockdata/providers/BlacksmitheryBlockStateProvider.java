@@ -9,6 +9,7 @@ import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ import java.util.function.Supplier;
 
 public class BlacksmitheryBlockStateProvider extends BlockStateProvider {
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static final Map<String, List<Supplier<Object>>> BRAIN = new HashMap<>();
+    public static final List<Supplier<Block>> CUBE_ALL = new ArrayList<>();
 
     public BlacksmitheryBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, BlacksmitheryMain.MOD_ID, exFileHelper);
@@ -24,14 +25,9 @@ public class BlacksmitheryBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        List<Supplier<Object>> funcion = BRAIN.getOrDefault("cube_all", List.of());
-        if (!funcion.isEmpty()) {
-            for (Supplier<Object> supplier : funcion) {
-                if (supplier.get() instanceof Block block) {
-                    simpleBlockWithItem(block, cubeAll(block));
-                } else {
-                    LOGGER.error("Invalid cube all entry: {}", supplier.get());
-                }
+        if (!CUBE_ALL.isEmpty()) {
+            for (Supplier<Block> supplier : CUBE_ALL) {
+                simpleBlockWithItem(supplier.get(), cubeAll(supplier.get()));
             }
         }
     }
