@@ -43,16 +43,10 @@ public class BlacksmitheryBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         if (!BLOCK_DROPS.isEmpty()) {
-            for (Supplier<DropData> object : BLOCK_DROPS) {
-                Block block = object.get().dropFrom();
+            for (Supplier<DropData> supplier : BLOCK_DROPS) {
+                Block block = supplier.get().dropFrom();
 
-                if (object.get().itemOrBlock() instanceof Block blockAsItem) {
-                    createMultipleOreDrops(block, blockAsItem.asItem(), object.get().min(), object.get().max());
-                } else if (object.get().itemOrBlock() instanceof Item item) {
-                    createMultipleOreDrops(block, item, object.get().min(), object.get().max());
-                } else {
-                    LOGGER.error("Invalid drop item for block {}: {}, Must be block or item", block, object.get().itemOrBlock());
-                }
+                createMultipleOreDrops(block, supplier.get().itemOrBlock(), supplier.get().min(), supplier.get().max());
             }
         }
 

@@ -7,6 +7,7 @@ import net.hirukarogue.blacksmithery.miscelaneous.DropData;
 import net.hirukarogue.blacksmithery.miscelaneous.tagdata.TagForBlocks;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import oshi.util.tuples.Pair;
 
@@ -52,13 +53,8 @@ public class BlockDataBuilder {
         return this;
     }
 
-    public BlockDataBuilder setDropRange(Block block, int min, int max) {
-        buildActions.add(() -> BlacksmitheryBlockLootTableProvider.BLOCK_DROPS.add(() -> new DropData(this.block, block, min, max)));
-        return this;
-    }
-
-    public BlockDataBuilder setDropRange(Item item, int min, int max) {
-        buildActions.add(() -> BlacksmitheryBlockLootTableProvider.BLOCK_DROPS.add(() -> new DropData(this.block, item, min, max)));
+    public BlockDataBuilder setDropRange(ItemLike drop, int min, int max) {
+        buildActions.add(() -> BlacksmitheryBlockLootTableProvider.BLOCK_DROPS.add(() -> new DropData(this.block, drop, min, max)));
         return this;
     }
 
