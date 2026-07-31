@@ -1,6 +1,8 @@
 {
   "values": [
     "blacksmithery:gold_axe_head",
-    "blacksmithery:gold_hammer_head"
+    "blacksmithery:gold_hammer_head",
+    "blacksmithery:gold_spear_head",
+    "blacksmithery:gold_blade"
   ]
 }

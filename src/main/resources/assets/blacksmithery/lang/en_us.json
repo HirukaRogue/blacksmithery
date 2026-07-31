@@ -2,6 +2,21 @@
   "item.blacksmithery.wooden_axe_head": "Wooden Axe Head",
   "item.blacksmithery.stone_axe_head": "Stone Axe Head",
   "item.blacksmithery.iron_axe_head": "Iron Axe Head",
-  "item.blacksmithery.gold_axe_head": "Gold Axe Head",
-  "item.blacksmithery.diamond_axe_head": "Diamond Axe Head"
+  "item.blacksmithery.gold_axe_head": "Golden Axe Head",
+  "item.blacksmithery.diamond_axe_head": "Diamond Axe Head",
+
+  "item.blacksmithery.stone_hammer_head": "Stone Hammer Head",
+  "item.blacksmithery.iron_hammer_head": "Iron Hammer Head",
+  "item.blacksmithery.gold_hammer_head": "Golden Hammer Head",
+  "item.blacksmithery.diamond_hammer_head": "Diamond Hammer Head",
+
+  "item.blacksmithery.stone_spear_head": "Stone Spear Head",
+  "item.blacksmithery.iron_spear_head": "Iron Spear Head",
+  "item.blacksmithery.gold_spear_head": "Golden Spear Head",
+  "item.blacksmithery.diamond_spear_head": "Diamond Spear Head",
+
+  "item.blacksmithery.stone_blade": "Stone Blade",
+  "item.blacksmithery.iron_blade": "Iron Blade",
+  "item.blacksmithery.gold_blade": "Golden Blade",
+  "item.blacksmithery.diamond_blade": "Diamond Blade"
 }

@@ -25,4 +25,16 @@ public class WeaponAndToolPieces {
     public static final DeferredItem<Item> IRON_HAMMER_HEAD = ITEMS.register("iron_hammer_head", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> GOLD_HAMMER_HEAD = ITEMS.register("gold_hammer_head", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DIAMOND_HAMMER_HEAD = ITEMS.register("diamond_hammer_head", () -> new Item(new Item.Properties()));
+
+    //Spear heads
+    public static final DeferredItem<Item> STONE_SPEAR_HEAD = ITEMS.register("stone_spear_head", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRON_SPEAR_HEAD = ITEMS.register("iron_spear_head", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_SPEAR_HEAD = ITEMS.register("gold_spear_head", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DIAMOND_SPEAR_HEAD = ITEMS.register("diamond_spear_head", () -> new Item(new Item.Properties()));
+
+    //Blades
+    public static final DeferredItem<Item> STONE_BLADE = ITEMS.register("stone_blade", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRON_BLADE = ITEMS.register("iron_blade", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_BLADE = ITEMS.register("gold_blade", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DIAMOND_BLADE = ITEMS.register("diamond_blade", () -> new Item(new Item.Properties()));
 }

@@ -30,6 +30,18 @@ public class CreativeTab {
                         output.accept(WeaponAndToolPieces.IRON_HAMMER_HEAD);
                         output.accept(WeaponAndToolPieces.GOLD_HAMMER_HEAD);
                         output.accept(WeaponAndToolPieces.DIAMOND_HAMMER_HEAD);
+
+                        //spear heads
+                        output.accept(WeaponAndToolPieces.STONE_SPEAR_HEAD);
+                        output.accept(WeaponAndToolPieces.IRON_SPEAR_HEAD);
+                        output.accept(WeaponAndToolPieces.GOLD_SPEAR_HEAD);
+                        output.accept(WeaponAndToolPieces.DIAMOND_SPEAR_HEAD);
+
+                        //blades
+                        output.accept(WeaponAndToolPieces.STONE_BLADE);
+                        output.accept(WeaponAndToolPieces.IRON_BLADE);
+                        output.accept(WeaponAndToolPieces.GOLD_BLADE);
+                        output.accept(WeaponAndToolPieces.DIAMOND_BLADE);
                     }).build()
     );
 

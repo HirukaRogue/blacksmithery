@@ -116,6 +116,46 @@ public class MainDataGen {
                     .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
                     .build();
 
+            //spear heads
+            ItemDataBuilder.item(WeaponAndToolPieces.STONE_SPEAR_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.SPEAR_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.STONE_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.IRON_SPEAR_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.SPEAR_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.IRON_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.GOLD_SPEAR_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.SPEAR_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.GOLD_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.DIAMOND_SPEAR_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.SPEAR_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.DIAMOND_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+
+            //blades
+            ItemDataBuilder.item(WeaponAndToolPieces.STONE_BLADE.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.BLADES)
+                    .addToTag(BlacksmitheryTags.Items.STONE_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.IRON_BLADE.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.BLADES)
+                    .addToTag(BlacksmitheryTags.Items.IRON_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.GOLD_BLADE.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.BLADES)
+                    .addToTag(BlacksmitheryTags.Items.GOLD_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.DIAMOND_BLADE.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.BLADES)
+                    .addToTag(BlacksmitheryTags.Items.DIAMOND_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+
             LOGGER.info("Datagen complete!");
         } catch (Exception e) {
             LOGGER.error("Fatal error on storing data", e);
