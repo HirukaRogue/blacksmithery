@@ -18,11 +18,18 @@ public class CreativeTab {
             .icon(() -> new ItemStack(WeaponAndToolPieces.GOLD_AXE_HEAD.get()))
                     .title(Component.translatable("creativetab.blacksmithery.tab"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        //axe heads
                         output.accept(WeaponAndToolPieces.WOODEN_AXE_HEAD);
                         output.accept(WeaponAndToolPieces.STONE_AXE_HEAD);
                         output.accept(WeaponAndToolPieces.IRON_AXE_HEAD);
                         output.accept(WeaponAndToolPieces.GOLD_AXE_HEAD);
                         output.accept(WeaponAndToolPieces.DIAMOND_AXE_HEAD);
+
+                        //hammer heads
+                        output.accept(WeaponAndToolPieces.STONE_HAMMER_HEAD);
+                        output.accept(WeaponAndToolPieces.IRON_HAMMER_HEAD);
+                        output.accept(WeaponAndToolPieces.GOLD_HAMMER_HEAD);
+                        output.accept(WeaponAndToolPieces.DIAMOND_HAMMER_HEAD);
                     }).build()
     );
 
