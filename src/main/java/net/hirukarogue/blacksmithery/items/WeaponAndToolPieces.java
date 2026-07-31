@@ -13,9 +13,16 @@ public class WeaponAndToolPieces {
         ITEMS.register(eventBus);
     }
 
+    //Axe heads
     public static final DeferredItem<Item> WOODEN_AXE_HEAD = ITEMS.register("wooden_axe_head", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> STONE_AXE_HEAD = ITEMS.register("stone_axe_head", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> IRON_AXE_HEAD = ITEMS.register("iron_axe_head", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> GOLD_AXE_HEAD = ITEMS.register("gold_axe_head", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DIAMOND_AXE_HEAD = ITEMS.register("diamond_axe_head", () -> new Item(new Item.Properties()));
+
+    //Hammer heads
+    public static final DeferredItem<Item> STONE_HAMMER_HEAD = ITEMS.register("stone_hammer_head", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRON_HAMMER_HEAD = ITEMS.register("iron_hammer_head", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_HAMMER_HEAD = ITEMS.register("gold_hammer_head", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DIAMOND_HAMMER_HEAD = ITEMS.register("diamond_hammer_head", () -> new Item(new Item.Properties()));
 }

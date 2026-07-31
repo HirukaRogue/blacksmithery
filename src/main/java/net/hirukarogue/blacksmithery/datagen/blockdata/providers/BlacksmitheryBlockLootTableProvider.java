@@ -46,7 +46,7 @@ public class BlacksmitheryBlockLootTableProvider extends BlockLootSubProvider {
             for (Supplier<DropData> supplier : BLOCK_DROPS) {
                 Block block = supplier.get().dropFrom();
 
-                createMultipleOreDrops(block, supplier.get().itemOrBlock(), supplier.get().min(), supplier.get().max());
+                createMultipleOreDrops(block, supplier.get().drop(), supplier.get().min(), supplier.get().max());
             }
         }
 

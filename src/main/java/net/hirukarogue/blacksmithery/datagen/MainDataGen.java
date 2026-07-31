@@ -72,6 +72,7 @@ public class MainDataGen {
     private static void storeData() {
         LOGGER.info("Starting registering on datagen...");
         try {
+            //axe heads
             ItemDataBuilder.item(WeaponAndToolPieces.WOODEN_AXE_HEAD.get()).basicItem()
                     .addToTag(BlacksmitheryTags.Items.AXE_HEADS)
                     .addToTag(BlacksmitheryTags.Items.WOOD_PIECES)
@@ -94,6 +95,27 @@ public class MainDataGen {
                     .addToTag(BlacksmitheryTags.Items.DIAMOND_PIECES)
                     .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
                     .build();
+
+            //hammer heads
+            ItemDataBuilder.item(WeaponAndToolPieces.STONE_HAMMER_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.HAMMER_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.STONE_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.IRON_HAMMER_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.HAMMER_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.IRON_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.GOLD_HAMMER_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.HAMMER_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.GOLD_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.DIAMOND_HAMMER_HEAD.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.HAMMER_HEADS)
+                    .addToTag(BlacksmitheryTags.Items.DIAMOND_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+
             LOGGER.info("Datagen complete!");
         } catch (Exception e) {
             LOGGER.error("Fatal error on storing data", e);
