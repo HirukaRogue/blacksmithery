@@ -42,6 +42,11 @@ public class CreativeTab {
                         output.accept(WeaponAndToolPieces.IRON_BLADE);
                         output.accept(WeaponAndToolPieces.GOLD_BLADE);
                         output.accept(WeaponAndToolPieces.DIAMOND_BLADE);
+
+                        //welding rings
+                        output.accept(WeaponAndToolPieces.IRON_WELDING_RING);
+                        output.accept(WeaponAndToolPieces.GOLD_WELDING_RING);
+                        output.accept(WeaponAndToolPieces.DIAMOND_WELDING_RING);
                     }).build()
     );
 

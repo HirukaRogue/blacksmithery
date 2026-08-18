@@ -37,4 +37,9 @@ public class WeaponAndToolPieces {
     public static final DeferredItem<Item> IRON_BLADE = ITEMS.register("iron_blade", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> GOLD_BLADE = ITEMS.register("gold_blade", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DIAMOND_BLADE = ITEMS.register("diamond_blade", () -> new Item(new Item.Properties()));
+
+    //Welding rings
+    public static final DeferredItem<Item> IRON_WELDING_RING = ITEMS.register("iron_welding_ring", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_WELDING_RING = ITEMS.register("gold_welding_ring", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DIAMOND_WELDING_RING = ITEMS.register("diamond_welding_ring", () -> new Item(new Item.Properties()));
 }

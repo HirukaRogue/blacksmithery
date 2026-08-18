@@ -18,5 +18,9 @@
   "item.blacksmithery.stone_blade": "Stone Blade",
   "item.blacksmithery.iron_blade": "Iron Blade",
   "item.blacksmithery.gold_blade": "Golden Blade",
-  "item.blacksmithery.diamond_blade": "Diamond Blade"
+  "item.blacksmithery.diamond_blade": "Diamond Blade",
+
+  "item.blacksmithery.iron_joint_ring": "Iron Joint Ring",
+  "item.blacksmithery.gold_joint_ring": "Golden Joint Ring",
+  "item.blacksmithery.diamond_joint_ring": "Diamond Joint Ring"
 }

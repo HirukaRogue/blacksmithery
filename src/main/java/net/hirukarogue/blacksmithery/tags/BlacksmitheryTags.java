@@ -24,6 +24,7 @@ public class BlacksmitheryTags {
         public static final TagKey<Item> HAMMER_HEADS = createTag("hammer_heads");
         public static final TagKey<Item> SPEAR_HEADS = createTag("spear_heads");
         public static final TagKey<Item> BLADES = createTag("blades");
+        public static final TagKey<Item> WELDING_RINGS = createTag("joint_rings");
 
         public static final TagKey<Item> WOOD_PIECES = createTag("wood_pieces");
         public static final TagKey<Item> STONE_PIECES = createTag("stone_pieces");

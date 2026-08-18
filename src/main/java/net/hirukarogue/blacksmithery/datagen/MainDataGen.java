@@ -156,6 +156,22 @@ public class MainDataGen {
                     .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
                     .build();
 
+            //welding rings
+            ItemDataBuilder.item(WeaponAndToolPieces.IRON_WELDING_RING.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.IRON_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.WELDING_RINGS)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.GOLD_WELDING_RING.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.GOLD_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.WELDING_RINGS)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+            ItemDataBuilder.item(WeaponAndToolPieces.DIAMOND_WELDING_RING.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.DIAMOND_PIECES)
+                    .addToTag(BlacksmitheryTags.Items.WELDING_RINGS)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_PIECES)
+                    .build();
+
             LOGGER.info("Datagen complete!");
         } catch (Exception e) {
             LOGGER.error("Fatal error on storing data", e);
