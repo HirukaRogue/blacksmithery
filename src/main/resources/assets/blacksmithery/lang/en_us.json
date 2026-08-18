@@ -20,7 +20,7 @@
   "item.blacksmithery.gold_blade": "Golden Blade",
   "item.blacksmithery.diamond_blade": "Diamond Blade",
 
-  "item.blacksmithery.iron_joint_ring": "Iron Joint Ring",
-  "item.blacksmithery.gold_joint_ring": "Golden Joint Ring",
-  "item.blacksmithery.diamond_joint_ring": "Diamond Joint Ring"
+  "item.blacksmithery.iron_welding_ring": "Iron Welding Ring",
+  "item.blacksmithery.gold_welding_ring": "Golden Welding Ring",
+  "item.blacksmithery.diamond_welding_ring": "Diamond Welding Ring"
 }
