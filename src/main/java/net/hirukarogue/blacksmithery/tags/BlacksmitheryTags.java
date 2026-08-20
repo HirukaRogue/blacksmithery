@@ -20,6 +20,9 @@ public class BlacksmitheryTags {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(BlacksmitheryMain.MOD_ID, name));
         }
 
+        //preserve in crafting tag
+        public static final TagKey<Item> PRESERVES_IN_CRAFTING = createTag("preserves_in_crafting");
+
         //piecies tags
         public static final TagKey<Item> AXE_HEADS = createTag("axe_heads");
         public static final TagKey<Item> HAMMER_HEADS = createTag("hammer_heads");
