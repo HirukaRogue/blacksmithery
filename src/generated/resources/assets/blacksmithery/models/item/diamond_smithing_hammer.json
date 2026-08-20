@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blacksmithery:item/diamond_smithing_hammer"
+  }
+}
