@@ -21,21 +21,24 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class GenericDataBuilder {
-    private final List<Runnable> buildActions = new ArrayList<>();
+    private static final List<Runnable> buildActions = new ArrayList<>();
 
-    public void toDatamap(DataMapType<?,?> dataMapType, Object key, Object value) {
+    public static GenericDataBuilder toDatamap(DataMapType<?,?> dataMapType, Object key, Object value) {
         buildActions.add(() -> BlacksmitheryDataMapProvider.BRAIN.add(() -> new DataMapData(dataMapType, new Pair<>(key, value))));
+        return new GenericDataBuilder();
     }
 
-    public void shapelessRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, List<ItemLike> ingredients) {
+    public static GenericDataBuilder shapelessRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, List<ItemLike> ingredients) {
         buildActions.add(() -> BlacksmitheryRecipeProvider.SHAPELESS_RECIPES.add( () -> new ShapelessRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredients)));
+        return new GenericDataBuilder();
     }
 
-    public void shapedRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, ShapedRecipeIngredientData ingredientData) {
+    public static GenericDataBuilder shapedRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, ShapedRecipeIngredientData ingredientData) {
         buildActions.add(() -> BlacksmitheryRecipeProvider.SHAPED_RECIPES.add(() -> new ShapedRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredientData)));
+        return new GenericDataBuilder();
     }
 
-    public void build() {
+    public static void build() {
         for (Runnable action : buildActions) {
             action.run();
         }

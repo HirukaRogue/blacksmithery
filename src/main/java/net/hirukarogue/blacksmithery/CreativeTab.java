@@ -1,5 +1,6 @@
 package net.hirukarogue.blacksmithery;
 
+import net.hirukarogue.blacksmithery.items.BlacksmitheryTools;
 import net.hirukarogue.blacksmithery.items.WeaponAndToolPieces;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -47,6 +48,16 @@ public class CreativeTab {
                         output.accept(WeaponAndToolPieces.IRON_WELDING_RING);
                         output.accept(WeaponAndToolPieces.GOLD_WELDING_RING);
                         output.accept(WeaponAndToolPieces.DIAMOND_WELDING_RING);
+
+                        //miscellaneous
+                        output.accept(WeaponAndToolPieces.LEATHER_STRIP);
+
+                        //tools
+                        //smithinghammer
+                        output.accept(BlacksmitheryTools.STONE_SMITHING_HAMMER);
+                        output.accept(BlacksmitheryTools.IRON_SMITHING_HAMMER);
+                        output.accept(BlacksmitheryTools.GOLD_SMITHING_HAMMER);
+                        output.accept(BlacksmitheryTools.DIAMOND_SMITHING_HAMMER);
                     }).build()
     );
 

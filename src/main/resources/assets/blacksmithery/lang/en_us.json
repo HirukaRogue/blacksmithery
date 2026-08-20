@@ -22,5 +22,12 @@
 
   "item.blacksmithery.iron_welding_ring": "Iron Welding Ring",
   "item.blacksmithery.gold_welding_ring": "Golden Welding Ring",
-  "item.blacksmithery.diamond_welding_ring": "Diamond Welding Ring"
+  "item.blacksmithery.diamond_welding_ring": "Diamond Welding Ring",
+
+  "item.blacksmithery.leather_strip": "Leather Strip",
+
+  "item.blacksmithery.stone_smithing_hammer": "Stone Smithing Hammer",
+  "item.blacksmithery.iron_smithing_hammer": "Iron Smithing Hammer",
+  "item.blacksmithery.gold_smithing_hammer": "Golden Smithing Hammer",
+  "item.blacksmithery.diamond_smithing_hammer": "Diamond Smithing Hammer"
 }

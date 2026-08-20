@@ -20,6 +20,7 @@ public class BlacksmitheryTags {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(BlacksmitheryMain.MOD_ID, name));
         }
 
+        //piecies tags
         public static final TagKey<Item> AXE_HEADS = createTag("axe_heads");
         public static final TagKey<Item> HAMMER_HEADS = createTag("hammer_heads");
         public static final TagKey<Item> SPEAR_HEADS = createTag("spear_heads");
@@ -33,5 +34,16 @@ public class BlacksmitheryTags {
         public static final TagKey<Item> DIAMOND_PIECES = createTag("diamond_pieces");
 
         public static final TagKey<Item> ORNAMENTAL_PIECES = createTag("ornamental_pieces");
+
+        //tool tags
+        public static final TagKey<Item> SMITHING_HAMMERS = createTag("smithing_hammers");
+
+        public static final TagKey<Item> WOODEN_TOOLS = createTag("wooden_tools");
+        public static final TagKey<Item> STONE_TOOLS = createTag("stone_tools");
+        public static final TagKey<Item> IRON_TOOLS = createTag("iron_tools");
+        public static final TagKey<Item> GOLD_TOOLS = createTag("gold_tools");
+        public static final TagKey<Item> DIAMOND_TOOLS = createTag("diamond_tools");
+
+        public static final TagKey<Item> ORNAMENTAL_TOOLS = createTag("ornamental_tools");
     }
 }

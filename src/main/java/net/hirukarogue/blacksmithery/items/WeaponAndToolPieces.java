@@ -42,4 +42,7 @@ public class WeaponAndToolPieces {
     public static final DeferredItem<Item> IRON_WELDING_RING = ITEMS.register("iron_welding_ring", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> GOLD_WELDING_RING = ITEMS.register("gold_welding_ring", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DIAMOND_WELDING_RING = ITEMS.register("diamond_welding_ring", () -> new Item(new Item.Properties()));
+
+    //miscellaneous
+    public static final DeferredItem<Item> LEATHER_STRIP = ITEMS.register("leather_strip", () -> new Item(new Item.Properties()));
 }
