@@ -12,6 +12,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.slf4j.Logger;
 import oshi.util.tuples.Pair;
@@ -44,8 +45,8 @@ public class BlacksmitheryRecipeProvider extends RecipeProvider {
 
                 ShapelessRecipeBuilder shaplessRecipe = ShapelessRecipeBuilder.shapeless(result.category(), result.result());
 
-                List<ItemLike> ingredients = data.ingredients();
-                for (ItemLike ingredient : ingredients) {
+                List<Ingredient> ingredients = data.ingredients();
+                for (Ingredient ingredient : ingredients) {
                     shaplessRecipe.requires(ingredient);
                 }
 
@@ -65,8 +66,8 @@ public class BlacksmitheryRecipeProvider extends RecipeProvider {
                         shapedRecipe.pattern(pattern);
                     }
 
-                    for (Pair<String, ItemLike> itemValue : ingredientData.itemValues()) {
-                        shapedRecipe.define(itemValue.getA().charAt(0), itemValue.getB());
+                    for (Pair<String, Ingredient> ingredientValue : ingredientData.itemValues()) {
+                        shapedRecipe.define(ingredientValue.getA().charAt(0), ingredientValue.getB());
                     }
 
                     shapedRecipe.unlockedBy("has_" + result.unlocked_by(), has(result.unlocked_by()));

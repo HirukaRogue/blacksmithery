@@ -29,7 +29,7 @@ public class SmithingHammer extends Item {
 
     @Override
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
-        if (itemAbility == BlacksmitheryToolAbilties.SMITHING) {
+        if (itemAbility.equals(BlacksmitheryToolAbilties.SMITHING)) {
             return true;
         }
 

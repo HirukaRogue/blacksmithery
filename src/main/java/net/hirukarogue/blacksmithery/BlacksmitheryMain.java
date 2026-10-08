@@ -1,6 +1,7 @@
 package net.hirukarogue.blacksmithery;
 
 import net.hirukarogue.blacksmithery.items.BlacksmitheryTools;
+import net.hirukarogue.blacksmithery.items.BlacksmitheryWeapons;
 import net.hirukarogue.blacksmithery.items.WeaponAndToolPieces;
 import org.slf4j.Logger;
 
@@ -30,6 +31,7 @@ public class BlacksmitheryMain {
         //Items Registry
         WeaponAndToolPieces.register(modEventBus);
         BlacksmitheryTools.register(modEventBus);
+        BlacksmitheryWeapons.register(modEventBus);
 
         //Creative Tab
         CreativeTab.register(modEventBus);

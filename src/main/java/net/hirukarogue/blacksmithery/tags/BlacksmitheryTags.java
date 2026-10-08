@@ -48,5 +48,27 @@ public class BlacksmitheryTags {
         public static final TagKey<Item> DIAMOND_TOOLS = createTag("diamond_tools");
 
         public static final TagKey<Item> ORNAMENTAL_TOOLS = createTag("ornamental_tools");
+
+        //weapon tags
+        //one hand
+        public static final TagKey<Item> ONE_HANDED_WEAPONS = createTag("one_handed_weapons");
+
+        public static final TagKey<Item> KNIVES = createTag("knives");
+        //two hands
+        public static final TagKey<Item> TWO_HANDED_WEAPONS = createTag("two_handed_weapons");
+
+        //polearms
+        public static final TagKey<Item> POLEARMS = createTag("polearms");
+
+        public static final TagKey<Item> SPEARS = createTag("spears");
+
+        //General weapon tags
+        public static final TagKey<Item> WOODEN_WEAPONS = createTag("wooden_weapons");
+        public static final TagKey<Item> STONE_WEAPONS = createTag("stone_weapons");
+        public static final TagKey<Item> IRON_WEAPONS = createTag("iron_weapons");
+        public static final TagKey<Item> GOLD_WEAPONS = createTag("gold_weapons");
+        public static final TagKey<Item> DIAMOND_WEAPONS = createTag("diamond_weapons");
+
+        public static final TagKey<Item> ORNAMENTAL_WEAPONS = createTag("ornamental_weapons");
     }
 }

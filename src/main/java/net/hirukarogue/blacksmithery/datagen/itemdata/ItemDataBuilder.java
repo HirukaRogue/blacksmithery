@@ -33,6 +33,16 @@ public class ItemDataBuilder {
         throw new IllegalArgumentException("An item cannot have more than 1 item model, item: " + this.item);
     }
 
+    public ItemDataBuilder knifeItem() {
+        if (!hasModel) {
+            buildActions.add(() -> BlacksmitheryItemModelProvider.KNIFE_ITEM.add(() -> this.item));
+            hasModel = true;
+            return this;
+        }
+
+        throw new IllegalArgumentException("An item cannot have more than 1 item model, item: " + this.item);
+    }
+
     public ItemDataBuilder addToTag(TagKey<Item> tagKey) {
         buildActions.add(() -> BlacksmitheryItemTagProvider.BRAIN.add(() -> new TagForItems(this.item, tagKey)));
         return this;

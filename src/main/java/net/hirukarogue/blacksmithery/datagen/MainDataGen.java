@@ -13,6 +13,7 @@ import net.hirukarogue.blacksmithery.datagen.itemdata.ItemDataBuilder;
 import net.hirukarogue.blacksmithery.datagen.itemdata.providers.BlacksmitheryItemModelProvider;
 import net.hirukarogue.blacksmithery.datagen.itemdata.providers.BlacksmitheryItemTagProvider;
 import net.hirukarogue.blacksmithery.items.BlacksmitheryTools;
+import net.hirukarogue.blacksmithery.items.BlacksmitheryWeapons;
 import net.hirukarogue.blacksmithery.items.WeaponAndToolPieces;
 import net.hirukarogue.blacksmithery.tags.BlacksmitheryTags;
 import net.minecraft.core.HolderLookup;
@@ -22,6 +23,7 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
@@ -29,6 +31,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -206,8 +209,68 @@ public class MainDataGen {
 
             LOGGER.info("Tools registered!");
 
+            //weapons
+            //one hand
+            ItemDataBuilder.item(BlacksmitheryWeapons.STONE_KNIFE.get()).knifeItem()
+                    .addToTag(BlacksmitheryTags.Items.ONE_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.KNIVES)
+                    .addToTag(BlacksmitheryTags.Items.STONE_WEAPONS)
+                    .build();
+
+            ItemDataBuilder.item(BlacksmitheryWeapons.IRON_KNIFE.get()).knifeItem()
+                    .addToTag(BlacksmitheryTags.Items.ONE_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.KNIVES)
+                    .addToTag(BlacksmitheryTags.Items.IRON_WEAPONS)
+                    .build();
+            ItemDataBuilder.item(BlacksmitheryWeapons.GOLDEN_KNIFE.get()).knifeItem()
+                    .addToTag(BlacksmitheryTags.Items.ONE_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.KNIVES)
+                    .addToTag(BlacksmitheryTags.Items.GOLD_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_WEAPONS)
+                    .build();
+            ItemDataBuilder.item(BlacksmitheryWeapons.DIAMOND_KNIFE.get()).knifeItem()
+                    .addToTag(BlacksmitheryTags.Items.ONE_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.KNIVES)
+                    .addToTag(BlacksmitheryTags.Items.DIAMOND_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_WEAPONS)
+                    .build();
+
+            //two hand
+
+
+            //polearm
+            ItemDataBuilder.item(BlacksmitheryWeapons.STONE_SPEAR.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.TWO_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.POLEARMS)
+                    .addToTag(BlacksmitheryTags.Items.SPEARS)
+                    .addToTag(BlacksmitheryTags.Items.STONE_WEAPONS)
+                    .build();
+
+            ItemDataBuilder.item(BlacksmitheryWeapons.IRON_SPEAR.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.TWO_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.POLEARMS)
+                    .addToTag(BlacksmitheryTags.Items.SPEARS)
+                    .addToTag(BlacksmitheryTags.Items.IRON_WEAPONS)
+                    .build();
+            ItemDataBuilder.item(BlacksmitheryWeapons.GOLDEN_SPEAR.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.TWO_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.POLEARMS)
+                    .addToTag(BlacksmitheryTags.Items.SPEARS)
+                    .addToTag(BlacksmitheryTags.Items.GOLD_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_WEAPONS)
+                    .build();
+            ItemDataBuilder.item(BlacksmitheryWeapons.DIAMOND_SPEAR.get()).basicItem()
+                    .addToTag(BlacksmitheryTags.Items.TWO_HANDED_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.POLEARMS)
+                    .addToTag(BlacksmitheryTags.Items.SPEARS)
+                    .addToTag(BlacksmitheryTags.Items.DIAMOND_WEAPONS)
+                    .addToTag(BlacksmitheryTags.Items.ORNAMENTAL_WEAPONS)
+                    .build();
+
             //Recipes
-            GenericDataBuilder.shapelessRecipe(new ItemStack(WeaponAndToolPieces.LEATHER_STRIP.get()), RecipeCategory.MISC, Items.LEATHER, "leather_strips_with_shears", List.of(Items.LEATHER, Items.SHEARS))
+            GenericDataBuilder.shapelessRecipe(new ItemStack(WeaponAndToolPieces.LEATHER_STRIP.get()), RecipeCategory.MISC, Items.LEATHER, "leather_strips_with_shears", List.of(Ingredient.of(Items.LEATHER), Ingredient.of(Items.SHEARS)))
+                    .build();
+            GenericDataBuilder.shapelessRecipe(new ItemStack(WeaponAndToolPieces.LEATHER_STRIP.get()), RecipeCategory.MISC, Items.LEATHER, "leather_strips_with_knifes", List.of(Ingredient.of(Items.LEATHER), Ingredient.of(BlacksmitheryTags.Items.KNIVES)))
                     .build();
 
             LOGGER.info("Datagen complete!");

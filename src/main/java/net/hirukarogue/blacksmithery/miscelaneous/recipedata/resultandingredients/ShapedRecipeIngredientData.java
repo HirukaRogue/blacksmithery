@@ -1,11 +1,12 @@
 package net.hirukarogue.blacksmithery.miscelaneous.recipedata.resultandingredients;
 
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import oshi.util.tuples.Pair;
 
 import java.util.List;
 
-public record ShapedRecipeIngredientData(String[] patterns, List<Pair<String, ItemLike>> itemValues) {
+public record ShapedRecipeIngredientData(String[] patterns, List<Pair<String, Ingredient>> itemValues) {
     public boolean isValidPattern() {
         if (patterns.length > 3 || patterns.length < 1) {
             return false;

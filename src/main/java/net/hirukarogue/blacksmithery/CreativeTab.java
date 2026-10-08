@@ -1,6 +1,7 @@
 package net.hirukarogue.blacksmithery;
 
 import net.hirukarogue.blacksmithery.items.BlacksmitheryTools;
+import net.hirukarogue.blacksmithery.items.BlacksmitheryWeapons;
 import net.hirukarogue.blacksmithery.items.WeaponAndToolPieces;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -58,6 +59,21 @@ public class CreativeTab {
                         output.accept(BlacksmitheryTools.IRON_SMITHING_HAMMER);
                         output.accept(BlacksmitheryTools.GOLD_SMITHING_HAMMER);
                         output.accept(BlacksmitheryTools.DIAMOND_SMITHING_HAMMER);
+
+                        //weapons
+                        //one hand
+                        //knives
+                        output.accept(BlacksmitheryWeapons.STONE_KNIFE);
+                        output.accept(BlacksmitheryWeapons.IRON_KNIFE);
+                        output.accept(BlacksmitheryWeapons.GOLDEN_KNIFE);
+                        output.accept(BlacksmitheryWeapons.DIAMOND_KNIFE);
+                        //two hands
+
+                        //polearms
+                        output.accept(BlacksmitheryWeapons.STONE_SPEAR);
+                        output.accept(BlacksmitheryWeapons.IRON_SPEAR);
+                        output.accept(BlacksmitheryWeapons.GOLDEN_SPEAR);
+                        output.accept(BlacksmitheryWeapons.DIAMOND_SPEAR);
                     }).build()
     );
 

@@ -29,5 +29,15 @@
   "item.blacksmithery.stone_smithing_hammer": "Stone Smithing Hammer",
   "item.blacksmithery.iron_smithing_hammer": "Iron Smithing Hammer",
   "item.blacksmithery.gold_smithing_hammer": "Golden Smithing Hammer",
-  "item.blacksmithery.diamond_smithing_hammer": "Diamond Smithing Hammer"
+  "item.blacksmithery.diamond_smithing_hammer": "Diamond Smithing Hammer",
+
+  "item.blacksmithery.stone_knife": "Stone Hunting Knife",
+  "item.blacksmithery.iron_knife": "Iron Hunting Knife",
+  "item.blacksmithery.gold_knife": "Golden Hunting Knife",
+  "item.blacksmithery.diamond_knife": "Diamond Hunting Knife",
+
+  "item.blacksmithery.stone_spear": "Stone Spear",
+  "item.blacksmithery.iron_spear": "Iron Spear",
+  "item.blacksmithery.gold_spear": "Golden Spear",
+  "item.blacksmithery.diamond_spear": "Diamond Spear"
 }

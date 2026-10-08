@@ -10,6 +10,7 @@ import net.hirukarogue.blacksmithery.miscelaneous.recipedata.ShapelessRecipeData
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.datamaps.DataMapType;
 import oshi.util.tuples.Pair;
@@ -28,7 +29,7 @@ public class GenericDataBuilder {
         return new GenericDataBuilder();
     }
 
-    public static GenericDataBuilder shapelessRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, List<ItemLike> ingredients) {
+    public static GenericDataBuilder shapelessRecipe(ItemStack result, RecipeCategory category, Item unlocked_by, String recipeName, List<Ingredient> ingredients) {
         buildActions.add(() -> BlacksmitheryRecipeProvider.SHAPELESS_RECIPES.add( () -> new ShapelessRecipeData(new RecipeResultData(category, result, unlocked_by, recipeName), ingredients)));
         return new GenericDataBuilder();
     }
