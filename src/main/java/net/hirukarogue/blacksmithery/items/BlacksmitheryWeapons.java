@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class BlacksmitheryWeapons {
-    protected static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BlacksmitheryMain.MOD_ID);
+    private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BlacksmitheryMain.MOD_ID);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
