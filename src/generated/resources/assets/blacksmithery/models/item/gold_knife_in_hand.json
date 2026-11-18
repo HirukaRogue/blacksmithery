@@ -1,0 +1,6 @@
+{
+  "parent": "blacksmithery:item/knife_in_hand",
+  "textures": {
+    "layer0": "blacksmithery:item/gold_knife"
+  }
+}
